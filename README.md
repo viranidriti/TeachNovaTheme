@@ -1,1 +1,2 @@
 # TeachNovaTheme
+TeachNova boasts a clean, spacious, and intuitive design, reminiscent of Apple's iconic aesthetic. Our light and modern theme, featuring white and light gray backgrounds with high-contrast dark text, ensures optimal readability. Vibrant blue and teal accents highlight key information and calls-to-action, adding a touch of energy to your daily tasks. With clear typography (Inter font), intuitive icons, and well-defined sections, TeachNova offers an uncluttered, professional, and effortlessly user-friendly experience.
