@@ -162,6 +162,7 @@ td.right {
 
 #sidebar h2, div.sidebarExtra h2 {
     font-size: 10pt;
+    border: #161414 5px solid;
 }
 
 .ui-widget {
