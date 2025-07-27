@@ -1,39 +1,76 @@
-{#<!--
-Gibbon: the flexible, open school platform
-Founded by Ross Parker at ICHK Secondary. Built by Ross Parker, Sandra Kuipers and the Gibbon community (https://gibbonedu.org/about/)
-Copyright © 2010, Gibbon Foundation
-Gibbon™, Gibbon Education Ltd. (Hong Kong)
+<footer class="bg-gray-50 border-t border-gray-200">
+    <div class="container mx-auto px-6 py-12">
+        <div class="md:flex md:justify-between">
+            <div class="mb-6 md:mb-0">
+                <a href="{{ absoluteURL ?? '/' }}" class="flex items-center space-x-2 text-gray-900 no-underline">
+                    {% if organisationLogo %}
+                        <img src="{{ absoluteURL }}/{{ organisationLogo }}" alt="{{ organisationName }}" class="h-24 w-24">
+                    {% else %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    {% endif %}
+                    <span class="text-xl font-bold text-gray-900">TeachNova</span>
+                </a>
+                <p class="mt-2 text-gray-600 text-sm">Reimagining instruction for every learner.</p>
+            </div>
+            <div class="grid grid-cols-3 gap-8 mt-8 md:mt-0">
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Platform</h2>
+                    <ul class="space-y-4">
+                        <li><a href="#features" class="text-gray-600 hover:text-gray-900 transition no-underline">Features</a></li>
+                        <li><a href="#how-it-works" class="text-gray-600 hover:text-gray-900 transition no-underline">How It Works</a></li>
+                        <li><a href="{{ absoluteURL ?? '' }}/modules" class="text-gray-600 hover:text-gray-900 transition no-underline">Modules</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Support</h2>
+                    <ul class="space-y-4">
+                        <li><a href="{{ absoluteURL ?? '' }}/passwordReset.php" class="text-gray-600 hover:text-gray-900 transition no-underline">Password Reset</a></li>
+                        <li><a href="{{ absoluteURL ?? '' }}/help.php" class="text-gray-600 hover:text-gray-900 transition no-underline">Help</a></li>
+                        {% if privacyPolicy %}
+                            <li><a href="{{ absoluteURL ?? '' }}/privacy.php" class="text-gray-600 hover:text-gray-900 transition no-underline">Privacy Policy</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Contact</h2>
+                    <ul class="space-y-4">
+                        <li><a href="{{ absoluteURL ?? '' }}/contact.php" class="text-gray-600 hover:text-gray-900 transition no-underline">Contact Us</a></li>
+                        <li><a href="#about" class="text-gray-600 hover:text-gray-900 transition no-underline">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="my-8 border-gray-200">
+        <div class="text-center text-gray-500 pb-8">
+            &copy; 2024 {{ organisationName ?? 'TeachNova' }}. All rights reserved. 
+        </div>
+    </div>
+</footer>
 
-This is a Gibbon template file, written in HTML and Twig syntax.
-For info about editing, see: https://twig.symfony.com/doc/2.x/
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Set current year
+    const yearSpan = document.querySelector('footer .text-center');
+    if (yearSpan) {
+        yearSpan.innerHTML = '&copy; ' + new Date().getFullYear() + ' {{ organisationName ?? "TeachNova" }}. All rights reserved.';
+    }
 
-
-Dear theme editors,
-
-Gibbon is an open source project, freely available for you to modify and share. 
-However, it's important to keep the information you see here in the footer intact. 
-This is vital legal information for us to have, as it shows who created Gibbon, 
-and that it is released under the GNU GPL.
-
-Please keep the names and copyrights as they're shown here. You are welcome to 
-edit the style of the text to suit your theme.
-
-Thank you,
-The Gibbon Team
-
--->#}
-
-<span class="inline-block font-bold">
-    {{ __('Powered by') }} <a class="text-{{ themeColour }}-800" target='_blank' href='https://gibbonedu.org'>Gibbon</a> {{ versionName }}<br/>
-</span> 
-<br/>
-<span class="text-xs">
-    {{ __('Founded by Ross Parker at ICHK Secondary') }} | {{ __('Built by Ross Parker, Sandra Kuipers and the Gibbon community') }}<br/>
-    Copyright © <a class="text-{{ themeColour }}-800" target='_blank' href='http://gibbonedu.org'>Gibbon Foundation</a> 2010-{{ 'now'|date('Y') }} | Gibbon™ of Gibbon Education Ltd. (Hong Kong)<br/>
-    {{ __('Created under the') }} <a class="text-{{ themeColour }}-800" target='_blank' href='https://www.gnu.org/licenses/gpl.html'>GNU GPL</a> |
-    <a class="text-{{ themeColour }}-800" target='_blank' href='https://gibbonedu.org/about/#ourTeam'>{{ __('Credits') }}</a> | 
-    <a class="text-{{ themeColour }}-800" target='_blank' href='https://gibbonedu.org/about/#translators'>{{ __('Translators') }}</a> | 
-    <a class="text-{{ themeColour }}-800" target='_blank' href='https://gibbonedu.org/support/'>{{ __('Support') }}</a>
-    <br/>
-    {{ footerThemeAuthor }}<br/>
-</span>
+    // Smooth scrolling for anchor links in footer
+    document.querySelectorAll('footer a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>

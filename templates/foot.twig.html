@@ -11,6 +11,9 @@ Page Foot: Outputs at the bottom, right before the closing </body> tag.
 Useful for scripts that need to execute after the page has loaded.
 -->#}
 
+{# Remove this line - footer should be included in main layout, not here #}
+{# {% include 'footer.twig.html' %} #}
+
 {% for code in page.extraFoot %}
     {{ code|raw }}
 {% endfor %}
