@@ -23,76 +23,74 @@ TODO: add template variable details.
         <a id="top"></a>
         {% set sidebarPos = isLoggedIn ? 'left' : 'right' %}
         
-        <header id="main-header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-40 border-b border-grey-400">
+        <header id="main-header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50">
 
         <div class="px-4 sm:px-6 lg:px-12 pb-2 pt-2">
 
-            {% block header %}
-                <div id="header" class="relative flex justify-between items-center">
+                {% block header %}
+                    <div id="header" class="relative flex justify-between items-center" >
 
-                    <a id="header-logo" class="block my-4 max-w-xs sm:max-w-full leading-none" href="{{ absoluteURL }}">
-                        <img class="block max-w-full {{ isLoggedIn ? 'h-16' : 'h-20 mt-4 mb-4' }}" alt="{{ organisationName }} Logo" src="{{ absoluteURL }}/{{ organisationLogo|default("themes/Default/img/logo.png")|trim('/', 'left') }}" style="max-height:100px;" />
-                    </a>
-
-                    <div class="flex-grow flex items-center justify-end text-right text-sm text-{{ themeColour }}-200">
-                        {% if isLoggedIn and currentUser %}
-
-                        <a href="{{ currentUser.url ?? './index.php?q=/preferences.php' }}" class="hidden sm:block hidden md:inline font-semibold text-gray-700 ">
-                            {{ currentUser.name }}
+                        <a id="header-logo" class="block my-4 max-w-xs sm:max-w-full leading-none" href="{{ absoluteURL }}">
+                            <img class="block max-w-full {{ isLoggedIn ? 'h-16' : 'h-20 mt-4 mb-4' }}" alt="{{ organisationName }} Logo" src="{{ absoluteURL }}/{{ organisationLogo|default("themes/Default/img/logo.png")|trim('/', 'left') }}" style="max-height:100px;" />
                         </a>
 
-                        <div class="relative px-4 py-1 {{ rightToLeft ? '-ml-3' : '-mr-3' }}" x-data="{menuOpen: false }" @mouseleave="menuOpen = false" @click.outside="menuOpen = false">
+                        <div class="flex-grow flex items-center justify-end text-right text-sm">
+                        {% if isLoggedIn %}
+                            <nav id="header-menu" class="flex-1 justify-between text-gray-700 no-bold ">
+                            {{ include('menu.twig.html') }}
+                            </nav>
+                        {% endif %}
 
-                            <a @mouseenter="menuOpen = true" @click="menuOpen = !menuOpen" :class="{'ring-opacity-75': menuOpen, 'ring-opacity-25': !menuOpen}" hx-boost="true" hx-target="#content-wrap" hx-select="#content-wrap" hx-swap="outerHTML show:no-scroll swap:0s" href="{{ currentUser.url ?? '#' }}" class="{{ currentUser.image_240 ? 'flex-none' : 'flex items-center justify-center' }} block overflow-hidden w-10 h-10 rounded-full bg-gray-200 ring-white ring-2 cursor-pointer">
-                            {% if currentUser.image_240 %}
-                                <img class="w-full -mt-1" src="{{ absoluteURL }}/{{ currentUser.image_240 }}" />
-                            {% else %}
-                                <img class="w-full" src="https://placehold.co/30x30/2563EB/FFFFFF?text={{ currentUser.name |split(' ')|first|slice(0,1) }}" />
+                <div class="relative flex justify-between items-center bblock px-4 py-2  hover:bg-yellow-500 w-24 h-8 text-xs">
+                <ul x-cloak x-show="menuOpen" x-transition:enter.duration.250ms x-transition:leave.duration.100ms class="list-none m-0 rounded-lg shadow-xl border border-gray-200 font-medium  group-hover:text-blue-700 bg-opacity-75 backdrop-blur-lg backdrop-contrast-125 backdrop-saturate-150 absolute rounded-md w-48 mt-1 p-1 sm:p-1.5 z-50 cursor-pointer {{ rightToLeft ? 'left-0' : 'right-0' }}">
+                    {% for link in minorLinks|reverse %}
+                    <li class="block px-4 py-2 hover:bg-gray-100 rounded">
+                        <a @click="menuOpen = false" href="{{ link.url }}" class="flex justify-between items-center text-sm text-blue-700 no-underline px-1 py-2 md:py-1 leading-normal {{ rightToLeft ? 'text-right' : 'text-left' }}" target="{{ link.target }}" {{ link.target == '_blank' ? 'rel="noopener noreferrer"' : '' }}>
+                            {{- link.name|raw -}}
+
+                            {% if link.target == '_blank' %}
+                                {{ icon('basic', 'external-link', 'size-4 text-blue-700 text-opacity-80 pointer-events-none') }}
                             {% endif %}
-                            </a>
-
-                            <ul x-cloak x-show="menuOpen" x-transition:enter.duration.250ms x-transition:leave.duration.100ms class="list-none m-0 rounded-lg shadow-xl border border-gray-200 font-medium text-gray-700 group-hover:text-blue-700 bg-opacity-75 backdrop-blur-lg backdrop-contrast-125 backdrop-saturate-150 absolute rounded-md w-48 mt-1 p-1 sm:p-1.5 z-50 cursor-pointer {{ rightToLeft ? 'left-0' : 'right-0' }}">
-                                {% for link in minorLinks|reverse %}
-                                <li class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
-                                    <a @click="menuOpen = false" href="{{ link.url }}" class="flex justify-between items-center text-sm text-black focus:text-{{ themeColour }}-200 no-underline px-1 py-2 md:py-1 leading-normal {{ rightToLeft ? 'text-right' : 'text-left' }}" target="{{ link.target }}" {{ link.target == '_blank' ? 'rel="noopener noreferrer"' : '' }}>
-                                        {{- link.name|raw -}}
-
-                                        {% if link.target == '_blank' %}
-                                            {{ icon('basic', 'external-link', 'size-4 text-white text-opacity-50 pointer-events-none') }}
-                                        {% endif %}
-                                    </a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-
-                        </div>
-                        {% else %}
-                            {% for link in minorLinks %}
-                                {{ link.prepend }}&nbsp;
-                                <a href="{{ link.url }}" class="text-black {{ loop.count > 3 ? 'hidden sm:block' }}" target="{{ link.target }}" {{ link.target == '_blank' ? 'rel="noopener noreferrer"' : '' }}>
-                                    {{- link.name|raw -}}
-                                </a>
-                                {{ link.append }}
-                            {% endfor %}
-                        {% endif %}
-
-                        {% if currentUser.houseName and currentUser.houseLogo %}
-                            <img class="ml-3 -mt-2 w-12 h-12" title="{{ currentUser.houseName }}" style="vertical-align: -75%;" src="{{ absoluteURL }}/{{ currentUser.houseLogo }}"/>
-                        {% endif %}
-                    </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
                 </div>
+                {% if isLoggedIn and currentUser %}
 
-                {% if isLoggedIn %}
-                <nav id="header-menu" class="flex-1 justify-between">
-                    {{ include('menu.twig.html') }}
-                </nav>
+                <a href="{{ currentUser.url ?? './index.php?q=/preferences.php' }}" class="hidden sm:block hidden md:inline font-semibold text-gray-700 ">
+                    Hi, {{ currentUser.name }} &nbsp;&nbsp;
+                </a>
+
+                <a @mouseenter="menuOpen = true" @click="menuOpen = !menuOpen" :class="{'ring-opacity-75': menuOpen, 'ring-opacity-25': !menuOpen}" hx-boost="true" hx-target="#content-wrap" hx-select="#content-wrap" hx-swap="outerHTML show:no-scroll swap:0s" href="{{ currentUser.url ?? '#' }}" class="{{ currentUser.image_240 ? 'flex-none' : 'flex items-center justify-center' }} block overflow-hidden w-10 h-10 rounded-full bg-gray-200 ring-white ring-2 cursor-pointer">
+                    {% if currentUser.image_240 %}
+                    <img class="w-full -mt-1" src="{{ absoluteURL }}/{{ currentUser.image_240 }}" />
+                {% else %}
+                    <img class="w-full" src="https://placehold.co/30x30/2563EB/FFFFFF?text={{ currentUser.name |split(' ')|first|slice(0,1) }}" />
+                {% endif %}
+                </a>
+                {% else %}
+                    {% for link in minorLinks %}
+                        {{ link.prepend }} {{ currentUser.Name }};
+                        <a href="{{ link.url }}" class="text-black {{ loop.count > 3 ? 'hidden sm:block' }}" target="{{ link.target }}" {{ link.target == '_blank' ? 'rel="noopener noreferrer"' : '' }}>
+                            {{- link.name|raw -}}
+                        </a>
+                        {{ link.append }}
+                    {% endfor %}
                 {% endif %}
 
-            {% endblock %}
+                {% if currentUser.houseName and currentUser.houseLogo %}
+                    <img class="ml-3 -mt-2 w-12 h-12" title="{{ currentUser.houseName }}" style="vertical-align: -75%;" src="{{ absoluteURL }}/{{ currentUser.houseLogo }}"/>
+                {% endif %}
+            </div>
+        </div>
+
+ 
+        {% endblock %}
         </div>
         </header>
 
-        <div id="wrapOuter" class="flex-1 pt-24 bg-transparent-100">
+        <div id="wrapOuter" class="pt-80 bg-transparent-100">
             <div id="wrap" class="px-0 sm:px-6 lg:px-12 -mt-48">
                 {% block beforePage %}
                 {% endblock beforePage %}

@@ -32,20 +32,20 @@ Fast Finder
 
 </style>
 
-<div id="fastFinder" class="sm:relative  sm:max-w-md m-0 p-0"
+<div id="fastFinder" class="border sm:relative  sm:max-w-md m-0 p-0"
     x-data="{ finderOpen: false, finderSearch: '' }"
     x-on:keydown.escape.prevent.stop="finderOpen = false"
-    @click.outside="finderOpen = false"
+    @click.outside="finderOpen = false" 
     >
 
-    <div class="relative flex">
-        <button type="button" @click="finderSearch=''" class="absolute top-0 left-0 mt-2.5 ml-2.5">
-            {{ icon('basic', 'search', 'size-5 text-white opacity-50') }}
+    <div class="relative flex border border-blue-400 rounded">
+        <button type="button" @click="finderSearch=''" class="absolute top-0 left-0 mt-2.5 ml-2.5 rounded-lg">
+            {{ icon('basic', 'search', 'size-5 text-blue-800 opacity-70') }}
         </button>
 
-        <input class="form-control flex-1 text-white placeholder:text-white placeholder:text-opacity-60 text-sm pl-10 h-10" 
+        <input class="w-full pl-4 pr-2 py-0.5 text-xs rounded-lg bg-gray-400 border-transparent focus:border-blue-300 focus:bg-blue-900 focus:ring-0 transition w-full pl-7 pr-2 py-1 rounded-lg bg-gray-400 focus:border-blue-500 focus:bg-black focus:ring-0 transition placeholder-blue-800" 
             type="search" autocomplete="off" 
-            name="search" placeholder="{{ __('Search') }}" 
+            name="search" placeholder="{{ __(' Search') }}" 
             hx-post="index_fastFinder_ajax.php" 
             hx-trigger="input changed delay:500ms, search" 
             hx-target="#search-results" 
@@ -54,14 +54,13 @@ Fast Finder
             @click="finderOpen = true"
             x-model="finderSearch"
         >
-
+        <div class="relative bg-blue-100 flex items-center rounded w-25 h-10 align=right absolute top-0 left-0 placeholder-yellow-800 focus:outline-none">
         {% if roleCategory == 'Staff' %}
-        <select name="searchType" class="w-20 h-10 text-white text-sm font-bold hidden sm:block"
+        <select name="searchType" class="block px-4 py-2 text-blue-800 w-24 h-8  text-xs"
             hx-post="index_fastFinder_ajax.php" 
             hx-target="#search-results" 
             hx-include="[name='search']"
-            hx-indicator=".htmx-indicator"
-            >
+            hx-indicator=".htmx-indicator">
             <option value="all">{{ __('All') }}</option>
             <option value="students">{{ __('Student') }}</option>
             <option value="staff">{{ __('Staff') }}</option>
@@ -70,6 +69,7 @@ Fast Finder
             <option value="facilities">{{ __('Facility') }}</option>
             <option value="actions">{{ __('Action') }}</option>
         </select>
+        </div>
         {% else %}
         <input name="searchType" type="hidden" value="all">
         {% endif %}
@@ -78,14 +78,14 @@ Fast Finder
 
     <div id="search-wrap" 
         x-show="finderOpen"
-        class="absolute top-0 left-0 mt-10 w-full origin-top-right rounded-sm bg-white shadow-lg focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="display:none; z-index: 45;">
+        class="absolute top-0 left-0 mt-10 w-full origin-top-right rounded-sm bg-white shadow-lg border border-blue-300 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" style="display:none; z-index: 45;">
 
-        <div class="htmx-indicator absolute top-0 left-0 h-10 w-full block px-4 py-2 text-sm italic text-gray-800 pointer-events-none"> 
+        <div class="htmx-indicator text-xs text-blue-800 absolute top-0 left-0 h-10 w-full block px-2 py-0.5 text-sm italic text-gray-800 pointer-events-none"> 
             {{ __('Searching...') }} 
         </div>
 
         <div id="search-results" class="py-1" role="none">
-            <span class="block px-4 py-2 text-sm text-gray-800" @click="finderOpen = false">
+            <span class="block pl-4 py-1 text-xs text-blue-800" @click="finderOpen = false">
                 {{ __('Start typing a name ...') }}
             </span>
         </div>

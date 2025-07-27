@@ -1,23 +1,9 @@
-{#<!--
-Gibbon: the flexible, open school platform
-Founded by Ross Parker at ICHK Secondary. Built by Ross Parker, Sandra Kuipers and the Gibbon community (https://gibbonedu.org/about/)
-Copyright © 2010, Gibbon Foundation
-Gibbon™, Gibbon Education Ltd. (Hong Kong)
-
-This is a Gibbon template file, written in HTML and Twig syntax.
-For info about editing, see: https://twig.symfony.com/doc/2.x/
-
-Page Foot: Outputs the contents of the HTML <head> tag. This includes
-all stylesheets and scripts with a 'head' context.
--->#}
-
 {% block meta %}
     <title>{{ page.title }}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta http-equiv="content-language" content="{{ locale }}"/>
-    <meta name="author" content="Ross Parker, International College Hong Kong"/>
     <meta name="robots" content="noindex"/>
     <meta name="Referrer‐Policy" value="no‐referrer | same‐origin"/>
     <meta name="htmx-config" content='{"scrollBehavior":"smooth", "scrollIntoViewOnBoost": true, "historyCacheSize": 0}'>
@@ -32,7 +18,82 @@ all stylesheets and scripts with a 'head' context.
         {% else %}
             <link rel="stylesheet" href="{{ absoluteURL }}/{{ asset.src }}?v={{ assetVersion }}.{{ cacheString }}" type="text/css" media="{{ asset.media }}" />
         {% endif %}
+           <!-- Tailwind CSS -->
+            <script src="https://cdn.tailwindcss.com"></script>
+    
+            <!-- Google Fonts: Inter -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+       <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB; /* bg-gray-50 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #2563EB, #0D9488);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #1E40AF 0%, #14B8A6 100%);
+        }
+        .worksheet-header {
+            background-color: #E0F2F1; /* A soft teal */
+            color: #0D9488;
+        }
+    </style>
     {% endfor %}
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles & Configuration -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #2563EB, #0D9488);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 100%, #E0E7FF 0%, #F9FAFB 40%);
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #1E40AF 0%, #14B8A6 100%);
+        }
+        .modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+        .error-message {
+            background-color: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .alert-warning {
+            background-color: #fef3cd;
+            border: 1px solid #faebcc;
+            color: #8a6d3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+    </style>
+
 {% endblock styles %}
 
 {% block scripts %}
