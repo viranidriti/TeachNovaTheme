@@ -43,7 +43,7 @@ TODO: add template variable details.
 
 
 
-                <div class="relative flex justify-between items-center bblock px-4 py-2 w-1 h-8 text-xs">
+                <div class="relative flex justify-between items-center bblock px-4 py-2 w-1 h-8 text-xs ">
                 <ul x-cloak x-show="menuOpen" x-transition:enter.duration.250ms x-transition:leave.duration.100ms class="list-none m-0 rounded-lg shadow-xl border border-gray-200 font-medium  group-hover:text-blue-700 bg-opacity-75 backdrop-blur-lg backdrop-contrast-125 backdrop-saturate-150 absolute rounded-md w-48 mt-1 p-1 sm:p-1.5 z-50 cursor-pointer {{ rightToLeft ? 'left-0' : 'right-0' }}">
                     {% for link in minorLinks|reverse %}
                     <li class="block px-4 py-2 hover:bg-gray-100 rounded">
@@ -66,7 +66,7 @@ TODO: add template variable details.
                 {% endif %}
 
                 <div class="relative px-4 py-4 {{ rightToLeft ? '-ml-3' : '-mr-3' }}" x-data="{menuOpen: false}" @mouseleave="menuOpen = false" @click.outside="menuOpen = false">
-                        <a @mouseenter="menuOpen = true" @click="menuOpen = !menuOpen" :class="{'ring-opacity-75': menuOpen, 'ring-opacity-25': !menuOpen}" hx-boost="true" hx-target="#content-wrap" hx-select="#content-wrap" hx-swap="outerHTML show:no-scroll swap:0s" href="{{ currentUser.url ?? '#' }}" class="{{ currentUser.image_240 ? 'flex-none' : 'flex items-center justify-center' }} block overflow-hidden w-10 h-10 rounded-full bg-gray-200 ring-white ring-2 cursor-pointer">
+                        <a @mouseenter="menuOpen = true" @click="menuOpen = !menuOpen" :class="{'ring-opacity-75': menuOpen, 'ring-opacity-25': !menuOpen}" hx-boost="true" hx-target="#content-wrap" hx-select="#content-wrap" hx-swap="outerHTML show:no-scroll swap:0s" href="{{ currentUser.url ?? '#' }}" class="{{ currentUser.image_240 ? 'flex-none' : 'flex items-center justify-center' }} block overflow-hidden w-10 h-10 rounded-full ring-white ring-2 cursor-pointer">
                         {% if currentUser.image_240 %}
                             <img class="w-full -mt-1" src="{{ absoluteURL }}/{{ currentUser.image_240 }}" />
                         {% else %}
@@ -101,11 +101,11 @@ TODO: add template variable details.
         </header>
 
         <div id="wrapOuter" class="pt-80 bg-transparent-100">
-            <div id="wrap" class="px-0 sm:px-6 lg:px-12 -mt-48">
+            <div id="wrap" class="px-0 sm:px-6 lg:px-12 -mt-48 ">
                 {% block beforePage %}
                 {% endblock beforePage %}
 
-                <div class="block lg:hidden mx-4 sm:mx-0 mb-4">
+                <div class="block lg:hidden mx-4 sm:mx-0 mb-4 ">
                 {% for type, alerts in page.alerts %}
                     {% for text in alerts %}
                         <div class="{{ type }}">{{ text|raw }}</div>
