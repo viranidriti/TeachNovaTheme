@@ -1160,3 +1160,106 @@ input[type="submit"].cta-gradient {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
+/* ...existing code... */
+
+/* Modern Form Styling - ONLY for ToolBox forms */
+.toolbox-form .modern-input-wrapper input[type="text"],
+.toolbox-form .modern-input-wrapper input[type="email"],
+.toolbox-form .modern-input-wrapper input[type="password"],
+.toolbox-form .modern-input-wrapper input[type="number"],
+.toolbox-form .modern-input-wrapper input[type="tel"],
+.toolbox-form .modern-input-wrapper input[type="url"],
+.toolbox-form .modern-input-wrapper input[type="date"],
+.toolbox-form .modern-input-wrapper input[type="time"],
+.toolbox-form .modern-input-wrapper input[type="datetime-local"],
+.toolbox-form .modern-input-wrapper textarea,
+.toolbox-form .modern-input-wrapper select,
+.toolbox-form input[type="text"],
+.toolbox-form input[type="email"],
+.toolbox-form input[type="password"],
+.toolbox-form input[type="number"],
+.toolbox-form input[type="tel"],
+.toolbox-form input[type="url"],
+.toolbox-form input[type="date"],
+.toolbox-form input[type="time"],
+.toolbox-form input[type="datetime-local"],
+.toolbox-form textarea,
+.toolbox-form select {
+    width: 100% !important;
+    background-color: #f3f4f6 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 0.5rem !important;
+    padding: 0.75rem 1rem !important;
+    color: #111827 !important;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+}
+
+.toolbox-form input:focus,
+.toolbox-form textarea:focus,
+.toolbox-form select:focus {
+    outline: none !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* ToolBox form container styling */
+.toolbox-form.bg-white.p-8.rounded-2xl {
+    background: white !important;
+    padding: 2rem !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+/* Remove the general form styling - keep only ToolBox specific */
+/* Remove all the old #form and .bg-white.p-8.rounded-2xl rules that aren't ToolBox specific */
+
+/* ...existing code... */
+
+/* ToolBox Layout Adjustments */
+.toolbox-form.bg-white.p-6.rounded-2xl {
+    background: white !important;
+    padding: 1.5rem !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+/* Compact spacing for form inputs */
+.toolbox-form .space-y-4 > * + * {
+    margin-top: 1rem !important;
+}
+
+/* Compact form inputs */
+.toolbox-form input,
+.toolbox-form textarea,
+.toolbox-form select {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+}
+
+/* Response area styling */
+#toolbox-response-area {
+    min-height: 600px;
+}
+
+#generatedResource {
+    font-family: 'Times New Roman', serif;
+    line-height: 1.6;
+}
+
+/* Light gradient background for input summaries - Darker and Brighter */
+.input-summary-gradient {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(20, 184, 166, 0.15) 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.25) !important;
+}
+
+/* Alternative even darker/brighter version */
+.input-summary-gradient-dark {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.20) 0%, rgba(20, 184, 166, 0.20) 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.30) !important;
+}
