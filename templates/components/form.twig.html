@@ -122,7 +122,7 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
                     <div class="drag-handle w-2 h-6 -ml-4 px-px border-4 border-dotted cursor-move"></div>
                 {% endif %}
         
-                {% for element in row.getElements %}
+                 {% for element in row.getElements %}
 
                     {% if element.isInstanceOf('Gibbon\\Forms\\Layout\\Heading') %}
                         {% set class = 'flex-grow justify-center' %}
@@ -148,10 +148,22 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
                             <span x-cloak x-show="invalid" class="tag error mr-4 whitespace-nowrap">{{ __('Please Check Form') }}</span>
                         {% endif %}
 
-                        {{ element.getOutput|raw }}
+                        {% if element.getAttribute('type') == 'submit' %}
+                            <button type="submit" 
+                                   name="{{ element.getAttribute('name') }}" 
+                                   value="{{ element.getAttribute('value') }}" 
+                                   class="cta-gradient text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.107 10.5a.75.75 0 00-1.214 1.029l1.5 2.25a.75.75 0 001.214 0l3.75-5.25z" clip-rule="evenodd" />
+                                </svg>
+                                <span>{{ element.getValue ?: __('Submit') }}</span>
+                            </button>
+                        {% else %}
+                            {{ element.getOutput|raw }}
+                        {% endif %}
+
                     </div>
                 {% endfor %}
-
                 </div>
             {% endfor %}
 

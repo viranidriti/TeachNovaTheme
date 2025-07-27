@@ -1078,3 +1078,85 @@ table.smallIntBorder td.noPadding {
 .standardForm:not(.blank) .formRow:not(:last-child)  {
     border-bottom-width: 1px;
 }
+
+
+// ...existing code...
+
+/* Submit Button Styling - Blue to Teal Gradient (No Hover Effects) */
+.cta-gradient,
+button.cta-gradient,
+input[type="submit"].cta-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+/* Fallback for all submit buttons if the class doesn't apply */
+button[type="submit"]:not(.cta-gradient),
+input[type="submit"]:not(.cta-gradient) {
+    background: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+/* Force styling on any element with Submit ID */
+#Submit,
+*[id*="Submit"] {
+    background: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+/* More specific selectors for submit buttons */
+button[type="submit"],
+input[type="submit"],
+.cta-gradient,
+button.cta-gradient,
+input[type="submit"].cta-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+}
+
+/* Override any existing purple styling */
+.bg-purple-600,
+.hover\:bg-purple-700:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%) !important;
+}
+
+
+/* Gradient text for ToolBox titles */
+.gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
