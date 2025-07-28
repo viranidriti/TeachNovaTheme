@@ -1035,6 +1035,9 @@ table.smallIntBorder td.noPadding {
     background: linear-gradient(to left top, #402568 2%, #935ee1 65%, #a871ec) no-repeat fixed;
 }
 
+.info-panel-gradient {
+        background: radial-gradient(circle at 20% 80%, #E0E7FF 0%, #F9FAFB 50%);
+    }
 .body-gradient-indigo {
     background: radial-gradient(80% 1000px at 20% 500px, #818cf8 0%, #4f46e5 100%) no-repeat fixed ;
 }

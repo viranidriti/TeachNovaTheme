@@ -9,105 +9,18 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
 -->#}
 {% import _self as homepage  %}
 
-<div class="flex flex-wrap mb-4 -mx-2 items-stretch ">
-    <div class="w-full mx-2 my-2">
-        <h2>{{ __('Welcome') }}</h2>
-        <p>
-        {{ indexText | raw }}
-        </p>
-    </div>
-
-    {% if admissionsEnabled %}
-        {{ homepage.card(
-            __(admissionsLinkName), 
-            __(admissionsLinkText), 
-            "/?q=/modules/Admissions/applicationFormSelect.php",
-            organisationName,
-            'first'
-        ) }}
-
-    {% elseif publicStudentApplications %}
-        {{ homepage.card(
-            __('Student Applications'), 
-            __('Parents of students interested in study at %1$s may use our %2$s online form%3$s to initiate the application process.'), 
-            "/?q=/modules/Students/applicationForm.php",
-            organisationName,
-            'first'
-        ) }}
-    {% endif %}
-
-    {% if publicStaffApplications %}
-        {{ homepage.card(
-            __('Staff Applications'), 
-            __('Individuals interested in working at %1$s may use our %2$s online form%3$s to view job openings and begin the recruitment process.'),
-            "/?q=/modules/Staff/applicationForm_jobOpenings_view.php",
-            organisationName,
-            'first'
-        ) }}
-    {% endif %}
-
-    {% if publicRegistration %}
-        {{ homepage.card(
-            __('Register'), 
-            __('Join our learning community.') ~ ' ' ~ __("It's free!"), 
-            "/?q=/publicRegistration.php"
-        ) }}
-
-    {% endif %}
-
-    {% if makeDepartmentsPublic %}
-        {{ homepage.card(
-            __('Departments'), 
-            __('Please feel free to %1$sbrowse our departmental information%2$s, to learn more about %3$s.'),
-            "/?q=/modules/Departments/departments.php",
-            organisationName,
-            'second'
-        ) }}
-    {% endif %}
-
-    {% if makeUnitsPublic %}
-        {{ homepage.card(
-            __('Learn With Us'), 
-            __('We are sharing some of our units of study with members of the public, so you can learn with us. Feel free to %1$sbrowse our public units%2$s.'),
-            "/?q=/modules/Planner/units_public.php&sidebar=false",
-            organisationName,
-            'second'
-        ) }}
-    {% endif %}
-
-    {% for hook in indexHooks %}
-        {{ homepage.card(hook.title, hook.text, hook.url, organisationName) }}
-    {% endfor %}
-
-    {% if privacyPolicy %}
-        {{ homepage.card(
-            __('Privacy Policy'), 
-            __('Read more about how personal data is used, stored and retained at %1$s.'),
-            "/?q=privacyPolicy.php",
-            organisationName,
-            'first'
-        ) }}
-    {% endif %}
-</div>
-{% macro card(name, content, url = '', organisationName, orgNamePos = 'first') %}
-
-
-    <div class="w-full sm:w-1/2 px-2 pb-4">
-        <a href="{{ absoluteURL ~ url }}" class="block border shadow-sm rounded bg-white h-full text-gray-800 hover:shadow-md hover:text-{{ themeColour }}-800 hover:border-{{ themeColour }}-600">
-            <div class="block m-0 pt-4 px-4 text-base uppercase font-bold font-sans tracking-tight">
-                {{ name }}
-                {{ icon('basic', 'chevron-double-right', 'size-6 float-right -mt-px fill-current') }}
-            </div>
-            <p class="mb-1 p-4 text-gray-700 leading-tight">
-                {% if orgNamePos == 'first' %}
-                    {{ content|format(organisationName, '', '')|raw }}
-                {% elseif orgNamePos == 'second' %}
-                    {{ content|format('', '', organisationName)|raw }}
-                {% else %}
-                    {{ content|raw }}
-                {% endif %}
+    <div class="hidden lg:flex items-center justify-center p-2 pb-80 info-panel-gradient min-h-screen h-screen">
+        <div class="max-w-md">
+            <a href="#" class="flex items-center space-x-2 mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                <span class="text-3xl font-bold gradient-text">TeachNova</span>
+            </a>
+            <h1 class="text-4xl font-bold text-gray-900 leading-tight">
+                Welcome back to the future of <span class="gradient-text">teaching</span>.
+            </h1>
+            <p class="mt-4 text-gray-600 text-lg">
+                Log in to access your AI-powered lesson plans, differentiation tools, and time-saving resources designed for the modern, inclusive classroom.
             </p>
-        </a>
+        </div>
     </div>
 
-{% endmacro card %}
