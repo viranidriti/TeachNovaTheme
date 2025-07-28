@@ -1083,7 +1083,7 @@ table.smallIntBorder td.noPadding {
 }
 
 
-// ...existing code...
+
 
 /* Submit Button Styling - Blue to Teal Gradient (No Hover Effects) */
 .cta-gradient,
@@ -1266,3 +1266,121 @@ input[type="submit"].cta-gradient {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.20) 0%, rgba(20, 184, 166, 0.20) 100%) !important;
     border: 1px solid rgba(59, 130, 246, 0.30) !important;
 }
+
+
+
+/* ...existing code... */
+
+/* Modern Navigation Sidebar Styling */
+.navigation-sidebar {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+}
+
+/* Navigation link hover effects */
+.navigation-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.navigation-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.navigation-link:hover::before {
+    left: 100%;
+}
+
+/* Active navigation state */
+.navigation-link.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%);
+    border-left: 4px solid #3b82f6;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+/* Module menu button enhancement */
+button[x-on\:click*="moduleMenu"] {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button[x-on\:click*="moduleMenu"]:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+}
+
+/* Sidebar content styling */
+.sidebar-content {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Category headers in navigation */
+nav h5 {
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    padding: 0 0.75rem;
+}
+
+/* Navigation icons */
+.nav-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+    color: #9ca3af;
+    transition: color 0.2s ease;
+}
+
+.navigation-link:hover .nav-icon,
+.navigation-link.active .nav-icon {
+    color: #3b82f6;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1024px) {
+    .navigation-sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 30;
+        margin-top: 5rem;
+    }
+}
+
+/* Enhanced mobile menu button */
+@media (max-width: 640px) {
+    button[x-on\:click*="moduleMenu"] {
+        width: 100%;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Smooth transitions for Alpine.js show/hide */
+[x-cloak] { display: none !important; }
+
+/* ...existing code... */
+
