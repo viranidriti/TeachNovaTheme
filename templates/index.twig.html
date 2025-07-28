@@ -65,12 +65,7 @@ TODO: add template variable details.
                         Hi, {{ currentUser.name }} &nbsp;&nbsp;
                     </a>
                 {% endif %}
-                {% if isLoggedIn and currentUser %}
 
-                <a href="{{ currentUser.url ?? './index.php?q=/preferences.php' }}" class="hidden sm:block hidden md:inline font-semibold text-gray-700 ">
-                    Hi, {{ currentUser.name }} &nbsp;&nbsp;
-                </a>
-                {% endif %}
 
                 <div class="relative px-4 py-4 {{ rightToLeft ? '-ml-3' : '-mr-3' }}" x-data="{menuOpen: false}" @mouseleave="menuOpen = false" @click.outside="menuOpen = false">
                         <a @mouseenter="menuOpen = true" @click="menuOpen = !menuOpen" :class="{'ring-opacity-75': menuOpen, 'ring-opacity-25': !menuOpen}" hx-boost="true" hx-target="#content-wrap" hx-select="#content-wrap" hx-swap="outerHTML show:no-scroll swap:0s" href="{{ currentUser.url ?? '#' }}" class="{{ currentUser.image_240 ? 'flex-none' : 'flex items-center justify-center' }} block overflow-hidden w-10 h-10 rounded-full ring-white ring-2 cursor-pointer">
