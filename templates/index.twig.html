@@ -128,11 +128,16 @@ TODO: add template variable details.
                 <div id="content-wrap" class="relative w-full min-h-1/2 flex content-start {{ sidebar ? 'gap-4 lg:gap-6 flex flex-col' : 'flex-col' }} {{ sidebarPos == 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse' }} {{ not isHomePage and not isLoggedIn ? 'flex-col-reverse'}} clearfix">
 
                     {% if sidebar and (sidebarContents or menuModule) %}
+                        {% if isLoggedIn %}
                         <div id="sidebar" class="w-full lg:w-sidebar lg:min-w-72 lg:max-w-xs ">
+                            {% else %}
+                        <div id="sidebar" class="w-full lg:w-sidebar lg:min-w-72 lg:max-w-xl ">
+                        {% endif %}
                             {% block sidebar %}
                             {{ include('navigation.twig.html') }}
                             {% endblock sidebar %}
                         </div>
+
 
                     {% else %}
                         {{ include('navigation.twig.html') }}
