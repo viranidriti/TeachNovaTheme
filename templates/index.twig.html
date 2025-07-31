@@ -31,11 +31,13 @@ TODO: add template variable details.
                 {% block header %}
                     <div id="header" class="relative flex justify-between items-center" >
 
-                        <a id="header-logo" class="block my-4 max-w-xs sm:max-w-full leading-none" href="{{ absoluteURL }}">
-                            <img class="block max-w-full {{ isLoggedIn ? 'h-16' : 'h-20 mt-4 mb-4' }}" alt="{{ organisationName }} Logo" src="{{ absoluteURL }}/{{ organisationLogo|default("themes/Default/img/logo.png")|trim('/', 'left') }}" style="max-height:100px;" />
+                        <a id="header-logo" class="block my-4 max-w-xs sm:max-w-full leading-none" href="/TeachNova/main.php"}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                            
                         </a>
 
                         <div class="flex-grow flex items-center justify-end text-right text-sm">
+                            &nbsp;&nbsp;<b>TeachNova </b>&nbsp;|&nbsp;
                         {% if isLoggedIn %}
                             <nav id="header-menu" class="flex-1 justify-between text-gray-700 no-bold ">
                             {{ include('menu.twig.html') }}
