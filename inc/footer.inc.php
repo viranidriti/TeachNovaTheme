@@ -10,7 +10,7 @@
                 </div>
                 <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Footer">
                     <a href="/TeachNova/index.php" class="text-base text-gray-600 hover:text-gray-900 transition-colors">Login</a>
-                    <a href="/TeachNova/contactus.php" class="text-base text-gray-600 hover:text-gray-900 transition-colors">Contact Us</a>
+                    <a href="/TeachNova/contact.php" class="text-base text-gray-600 hover:text-gray-900 transition-colors">Contact Us</a>
                     <a href="/TeachNova/about.php" class="text-base text-gray-600 hover:text-gray-900 transition-colors">About Us</a>
                 </nav>
             </div>
