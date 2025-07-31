@@ -29,8 +29,8 @@
                     } 
                     ?>
 
-                    <a href="/TeachNova/index.php" class="hidden sm:inline-block bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
-                        Get Started
+                    <a href="/TeachNova/about.php" class="hidden sm:inline-block bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
+                        About Us
                     </a>
                 </div>
             </nav>
