@@ -64,7 +64,7 @@ TODO: add template variable details.
 
                 {% if isLoggedIn and currentUser %}
                     <a href="{{ currentUser.url ?? './index.php?q=/preferences.php' }}" class="hidden sm:block hidden md:inline font-semibold text-gray-700 ">
-                        Hi, {{ currentUser.name }} &nbsp;&nbsp;
+                        Hi, {{ currentUser.username }}! &nbsp;&nbsp;
                     </a>
                 {% endif %}
 
