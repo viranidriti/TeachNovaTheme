@@ -1,3 +1,6 @@
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
  <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-40 bg-gray-50/80 backdrop-blur-lg border-b border-gray-200">
         <div class="container mx-auto px-6 py-4">
