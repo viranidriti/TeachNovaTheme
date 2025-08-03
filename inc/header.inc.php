@@ -1,5 +1,5 @@
 <?php
-    if (!empty($session->get('absoluteURL'))) {
+    if (isset($session) && !empty($session->get('absoluteURL'))) {
         $URL = $session->get('absoluteURL')."/";
         $URL=htmlspecialchars($URL); // Ensure URL is safe for output
     } else {
