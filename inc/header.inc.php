@@ -32,7 +32,10 @@
                     } 
                     ?>
 
-                    <a href="/TeachNova/about.php" class="hidden sm:inline-block bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
+                   <a href="/TeachNova/contact.php" class="hidden sm:inline-block text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                        Contact Us
+                    </a>
+                    <a href="/TeachNova/about.php" class="hidden sm:inline-block text-gray-600 hover:text-gray-900 transition-colors font-medium">
                         About Us
                     </a>
                 </div>
