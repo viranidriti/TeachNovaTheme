@@ -1,17 +1,27 @@
+<?php
+    if (!empty($session->get('absoluteURL'))) {
+        $URL = $session->get('absoluteURL')."/";
+        $URL=htmlspecialchars($URL); // Ensure URL is safe for output
+    } else {
+        $URL= '/'; // Default URL if not set
+    
+    }
+?>
+
    <!-- Footer -->
     <footer class="bg-white border-t border-gray-200">
         <div class="container mx-auto max-w-7xl px-6 py-12">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8">
                 <div class="flex-shrink-0">
-                    <a href="/" class="flex items-center space-x-2">
+                    <a href="<?php echo $URL; ?>" class="flex items-center space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                         <span class="text-2xl font-bold text-gray-900">TeachNova</span>
                     </a>
                 </div>
                 <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Footer">
-                    <a href="/index.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">Login</a>
-                    <a href="/contact.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">Contact Us</a>
-                    <a href="/about.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">About Us</a>
+                    <a href="<?php echo $URL; ?>index.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">Login</a>
+                    <a href="<?php echo $URL; ?>contact.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">Contact Us</a>
+                    <a href="<?php echo $URL; ?>about.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">About Us</a>
                 </nav>
             </div>
             <div class="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row-reverse items-center justify-between gap-y-4">

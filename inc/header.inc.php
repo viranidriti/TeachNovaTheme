@@ -1,3 +1,13 @@
+<?php
+    if (!empty($session->get('absoluteURL'))) {
+        $URL = $session->get('absoluteURL')."/";
+        $URL=htmlspecialchars($URL); // Ensure URL is safe for output
+    } else {
+        $URL= '/'; // Default URL if not set
+    
+    }
+?>
+
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -32,10 +42,10 @@
                     } 
                     ?>
 
-                   <a href="/TeachNova/contact.php" class="hidden sm:inline-block text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                   <a href="<?php echo $URL; ?>contact.php" class="hidden sm:inline-block text-gray-600 hover:text-gray-900 transition-colors font-medium">
                         Contact Us
                     </a>
-                    <a href="/TeachNova/about.php" class="hidden sm:inline-block text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                    <a href="<?php echo $URL; ?>about.php" class="hidden sm:inline-block text-gray-600 hover:text-gray-900 transition-colors font-medium">
                         About Us
                     </a>
                 </div>

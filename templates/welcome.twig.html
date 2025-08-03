@@ -1,17 +1,8 @@
-{#<!--
-Gibbon: the flexible, open school platform
-Founded by Ross Parker at ICHK Secondary. Built by Ross Parker, Sandra Kuipers and the Gibbon community (https://gibbonedu.org/about/)
-Copyright © 2010, Gibbon Foundation
-Gibbon™, Gibbon Education Ltd. (Hong Kong)
-
-This is a Gibbon template file, written in HTML and Twig syntax.
-For info about editing, see: https://twig.symfony.com/doc/2.x/
--->#}
 {% import _self as homepage  %}
 
     <div class="hidden lg:flex items-center justify-center p-2 pb-80 info-panel-gradient min-h-screen h-screen">
         <div class="max-w-md">
-            <a href="/TeachNova/main.php" class="flex items-center space-x-2 mb-8">
+            <a href="<?php echo $URL; ?>main.php" class="flex items-center space-x-2 mb-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                 <span class="text-3xl font-bold gradient-text">TeachNova</span>
             </a>
@@ -22,7 +13,7 @@ For info about editing, see: https://twig.symfony.com/doc/2.x/
                 Log in to access your AI-powered lesson plans, differentiation tools, and time-saving resources designed for the modern, inclusive classroom.
             </p>
             <p class="text-sm text-gray-500 pt-5"><br>
-                Want a new account? <a href="/TeachNova/signup.php" class="font-medium text-blue-600 hover:text-blue-500">Sign  Up Here</a>.
+                Want a new account? <a href="<?php echo $URL; ?>signup.php" class="font-medium text-blue-600 hover:text-blue-500">Sign  Up Here</a>.
             </p>
         </div>
     </div>
