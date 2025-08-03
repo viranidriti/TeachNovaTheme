@@ -1,10 +1,15 @@
 <?php
-    if (isset($session) && !empty($session->get('absoluteURL'))) {
-        $URL = $session->get('absoluteURL')."/";
-        $URL=htmlspecialchars($URL); // Ensure URL is safe for output
+    // Fix the URL retrieval logic
+    if (isset($this->session) && $this->session->has('absoluteURL')) {
+        $URL = $this->session->get('absoluteURL');
     } else {
-        $URL= '/'; // Default URL if not set
-    
+        // Fallback to try getting it from global session or default
+        global $session;
+        if (isset($session) && $session->has('absoluteURL')) {
+            $URL = $session->get('absoluteURL');
+        } else {
+            $URL = '/TeachNova'; // Default fallback URL
+        }
     }
 ?>
 
