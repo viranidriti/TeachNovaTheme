@@ -9,9 +9,9 @@
                     </a>
                 </div>
                 <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Footer">
-                    <a href="/TeachNova/index.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">Login</a>
-                    <a href="/TeachNova/contact.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">Contact Us</a>
-                    <a href="/TeachNova/about.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">About Us</a>
+                    <a href="/index.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">Login</a>
+                    <a href="/contact.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">Contact Us</a>
+                    <a href="/about.php" class="text-base text-blue-900 hover:text-blue-500 transition-colors">About Us</a>
                 </nav>
             </div>
             <div class="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row-reverse items-center justify-between gap-y-4">

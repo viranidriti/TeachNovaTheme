@@ -7,7 +7,7 @@
             <nav class="flex items-center justify-between">
                 <!-- Logo -->
 
-                <a href="/TeachNova/main.php" class="flex items-center space-x-2">
+                <a href="/main.php" class="flex items-center space-x-2">
                     <?php if (!empty($organisationLogo)): ?>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                         <span class="text-2xl font-bold text-gray-900"><?php echo htmlspecialchars($organisationName); ?></span>
