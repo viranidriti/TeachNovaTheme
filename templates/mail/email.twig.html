@@ -6,232 +6,166 @@ Gibbon™, Gibbon Education Ltd. (Hong Kong)
 
 This is a Gibbon template file, written in HTML and Twig syntax.
 For info about editing, see: https://twig.symfony.com/doc/2.x/
-
-Open source, responsive email template by leemunroe
-https://github.com/leemunroe/responsive-html-email-template
-
-The MIT License (MIT)
-
-Copyright (c) [2013] [Lee Munroe]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 -->#}
-{% set fontFamily = "'Helvetica Neue',Helvetica,Arial,sans-serif!important" %}
-{% set linkStyle = "color:#439fe0;font-weight:bold;text-decoration:none;" %}
-{% set buttonColor = "#439fe0" %}
-{% set buttonHover = "#4e6d8c" %}
-<!doctype html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>{{ title }}</title>
+{% set fontFamily = "'Inter', Arial, sans-serif" %}
+{% set linkStyle = "color:#2563EB;font-weight:600;text-decoration:none;" %}
+{% set buttonColor = "#1E40AF" %}
+{% set buttonHover = "#1E3A8A" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }} - {{ organisationName|default('TeachNova') }}</title>
     <style>
+        /* Basic Resets */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        table { border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+        
+        /* Main Styles */
+        body {
+            background-color: #F9FAFB;
+            font-family: {{ fontFamily }};
+        }
 
-    /* -------------------------------------
-        RESPONSIVE AND MOBILE FRIENDLY STYLES
-    ------------------------------------- */
-    @media only screen and (max-width: 620px) {
-      table[class=body] h1 {
-        font-size: 28px !important;
-        margin-bottom: 10px !important;
-      }
-      table[class=body] p,
-            table[class=body] ul,
-            table[class=body] ol,
-            table[class=body] td,
-            table[class=body] span,
-            table[class=body] a {
-        font-size: 16px !important;
-      }
-      table[class=body] .wrapper,
-            table[class=body] .article {
-        padding: 20px 10px !important;
-      }
-      table[class=body] .content {
-        padding: 0 !important;
-      }
-      table[class=body] .container {
-        padding: 0 !important;
-        width: 100% !important;
-      }
-      table[class=body] .main {
-        border-left-width: 0 !important;
-        border-radius: 0 !important;
-        border-right-width: 0 !important;
-      }
-      table[class=body] .btn table {
-        width: 100% !important;
-      }
-      table[class=body] .btn a {
-        width: 100% !important;
-      }
-      table[class=body] .img-responsive {
-        height: auto !important;
-        max-width: 100% !important;
-        width: auto !important;
-      }
-      table[class=foot] .content-block,
-      table[class=foot] .content-block a {
-        font-size: 12px !important;
-      }
-      img, img[style] {
-          max-width: 100%;
-      }
-    }
+        /* Responsive Styles */
+        @media only screen and (max-width: 620px) {
+            .main-content {
+                padding: 24px !important;
+                border-radius: 8px !important;
+            }
+            .content-width {
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 0 16px !important;
+            }
+            h1 {
+                font-size: 24px !important;
+            }
+            .button-link {
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+                padding: 12px 20px !important;
+                font-size: 14px !important;
+            }
+            .logo-text {
+                font-size: 20px !important;
+            }
+            .logo-container {
+                padding: 16px 0 !important;
+            }
+        }
 
-    /* -------------------------------------
-        PRESERVE THESE STYLES IN THE HEAD
-    ------------------------------------- */
+        /* Gradient button for better email client support */
+        .gradient-button {
+            background: linear-gradient(135deg, #1E40AF 0%, #14B8A6 100%);
+            background-color: #1E40AF; /* Fallback */
+        }
 
-    @media all {
-      .ExternalClass {
-        width: 100%;
-      }
-      .ExternalClass,
-            .ExternalClass p,
-            .ExternalClass span,
-            .ExternalClass font,
-            .ExternalClass td,
-            .ExternalClass div {
-        line-height: 100%;
-      }
-      .apple-link a {
-        color: inherit !important;
-        font-family: inherit !important;
-        font-size: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-        text-decoration: none !important;
-      }
-      .btn-primary table td:hover {
-        color: #ffffff !important;
-        background-color: {{ buttonHover }} !important;
-      }
-      .btn-primary a:hover {
-        color: #ffffff !important;
-        background-color: {{ buttonHover }} !important;
-        border-color: {{ buttonHover }} !important;
-      }
-    }
+        .gradient-button:hover {
+            background: linear-gradient(135deg, #1E3A8A 0%, #0F766E 100%);
+            background-color: #1E3A8A; /* Fallback */
+        }
     </style>
-  </head>
-  <body class="" style="background-color: #f6f6f6; font-family: {{ fontFamily }}; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-    <table border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #f6f6f6;">
-      <tr>
-        <td style="font-family: {{ fontFamily }}; font-size: 14px; vertical-align: top;">&nbsp;</td>
-        <td class="container" style="font-family: {{ fontFamily }}; font-size: 14px; vertical-align: top; display: block; Margin: 0 auto; max-width: {{ maxWidth|default('780px') }}; padding: 10px 0px; width: 90%;">
-          <div class="header" style="box-sizing: border-box; display: block; Margin: 0 auto; max-width: {{ maxWidth|default('780px') }}; padding:20px 16px 12px;text-align:center;">
-            <a href="{{ absoluteURL }}" style="{{ linkStyle }}" target="_blank">
-                <img src="{{ absoluteURL }}/{{ organisationLogo|replace({'svg':'png'})|default("/themes/Default/img/logo.png") }}" style="outline:none;text-decoration:none;border:none" height="50">
-            </a>
-          </div>
-          <div class="content" style="box-sizing: border-box; display: block; Margin: 0 auto; max-width: {{ maxWidth|default('780px') }}; padding: 0px 0px 40px;">
+</head>
+<body style="background-color: #F9FAFB; margin: 0 !important; padding: 40px 0 !important;">
+    <!-- Hidden Preheader -->
+    <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">
+        {% block preview %}{{ preview }}{% endblock %}
+    </span>
 
-            <!-- START CENTERED WHITE CONTAINER -->
-            <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">
-                {% block preview %}{{ preview }}{% endblock %}
-            </span>
-            <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-radius: 6px;">
-
-              <!-- START MAIN CONTENT AREA -->
-              <tr>
-                <td class="wrapper" style="font-family: {{ fontFamily }}; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 32px;">
-                  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+    <!-- Main Table -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="content-width" style="max-width: 600px;">
+                                         <!-- Logo -->
                     <tr>
-                      <td style="font-family: {{ fontFamily }}; font-size: 14px; vertical-align: top;">
-                        <div style="font-family: {{ fontFamily }}; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;color: #373737;">
-                            {% block title %}
-                                <h2 style="margin-top: 0px;">{{ title }}</h2>
-                            {% endblock %}
-                        </div>
-                        <div style="font-family: {{ fontFamily }}; font-size: 16px; line-height: 22px; font-weight: normal; margin: 0; Margin-bottom: 15px; color: #555549;">
-                            {% block body %}{{ body|raw }}{% endblock %}
-                        </div>
-
-                        {% if button  %}
-                        <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt;  box-sizing: border-box;">
-                          <tbody>
-                            <tr>
-                              <td align="left" style="font-family: {{ fontFamily }}; font-size: 14px; vertical-align: top; padding: 15px 0px 25px;">
-                                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
-                                  <tbody>
-                                    <tr>
-                                      <td style="font-family: {{ fontFamily }}; font-size: 18px; vertical-align: top; background-color: {{ buttonColor }}; border-radius: 5px; text-align: center;"> 
-                                        <a href="{{ button.external or 'http' in button.url ? button.url : absoluteURL ~ '/' ~ button.url }}" target="_blank" style="display: inline-block; color: #ffffff; background-color: {{ buttonColor }}; border: solid 1px {{ buttonColor }}; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 18px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: {{ buttonColor }};">
-                                            {{ button.text }}
-                                        </a> </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-
-                              {% if button2  %}
-                                <td align="left" style="font-family: {{ fontFamily }}; font-size: 14px; vertical-align: top; padding: 15px 15px 25px;">
-                                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
-                                    <tbody>
-                                        <tr>
-                                        <td style="font-family: {{ fontFamily }}; font-size: 18px; vertical-align: top; background-color: {{ buttonColor }}; border-radius: 5px; text-align: center;"> 
-                                            <a href="{{ button2.external or 'http' in button2.url ? button2.url : absoluteURL ~ '/' ~ button2.url }}" target="_blank" style="display: inline-block; color: {{ buttonColor }}; background-color: #ffffff; border: solid 1px {{ buttonColor }}; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 18px; font-weight: normal; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: {{ buttonColor }};">
-                                                {{ button2.text }}
-                                            </a> </td>
-                                        </tr>
-                                    </tbody>
-                                    </table>
-                                </td>
-                              {% endif %}
-                            </tr>
-                          </tbody>
-                        </table>
-                        {% endif %}
-
-                        <p style="font-family: {{ fontFamily }}; font-size: 16px; line-height: 22px; font-weight: normal; margin: 0; color: #555549;">
-                            {% block bodyBottom %}{{ bodyBottom }}{% endblock %}
-                        </p>
-                      </td>
+                        <td align="center" class="logo-container" style="padding: 20px 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                                <span class="logo-text" style="font-family: {{ fontFamily }}; font-size: 24px; font-weight: 800; color: #111827;">TeachNova</span>
+                            </a>
+                        </td>
                     </tr>
-                  </table>
-                </td>
-              </tr>
+                    
+                    <!-- Main Content Card -->
+                    <tr>
+                        <td bgcolor="#ffffff" align="left" class="main-content" style="padding: 40px; border-radius: 16px; border: 1px solid #E5E7EB;">
+                            <!-- Title Block -->
+                            {% block title %}
+                                <h1 style="font-family: {{ fontFamily }}; font-size: 28px; font-weight: 800; color: #111827; margin: 0;">{{ title }}</h1>
+                            {% endblock %}
+                            
+                            <!-- Body Content -->
+                            <div style="font-family: {{ fontFamily }}; font-size: 16px; line-height: 24px; color: #4B5563; margin: 24px 0 0;">
+                                {% block body %}{{ body|raw }}{% endblock %}
+                            </div>
 
-            <!-- END MAIN CONTENT AREA -->
-            </table>
+                            <!-- Primary Button -->
+                            {% if button %}
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                <tr>
+                                    <td align="left" style="padding-top: 32px;">
+                                        <table border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="border-radius: 8px;" bgcolor="{{ buttonColor }}">
+                                                    <a href="{{ button.external or 'http' in button.url ? button.url : absoluteURL ~ '/' ~ button.url }}" target="_blank" class="button-link gradient-button" style="display: inline-block; padding: 14px 28px; font-family: {{ fontFamily }}; font-size: 16px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 8px; background: linear-gradient(135deg, #1E40AF 0%, #14B8A6 100%); background-color: {{ buttonColor }};">
+                                                        {{ button.text }}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            {% endif %}
 
-            <!-- START FOOTER -->
-            <div class="footer" style="clear: both; Margin-top: 10px; text-align: center; width: 100%;">
-              <table class="foot" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
-                <tr>
-                  <td class="content-block" style="font-family: {{ fontFamily }}; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                    {% block footer %}
-                        {{ __('Email sent via %1$s at %2$s.')|format(systemName, organisationName) }}
-                    {% endblock %}
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <!-- END FOOTER -->
+                            <!-- Secondary Button (if exists) -->
+                            {% if button2 %}
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                <tr>
+                                    <td align="left" style="padding-top: 16px;">
+                                        <table border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="border-radius: 8px; border: 2px solid {{ buttonColor }};" bgcolor="#ffffff">
+                                                    <a href="{{ button2.external or 'http' in button2.url ? button2.url : absoluteURL ~ '/' ~ button2.url }}" target="_blank" class="button-link" style="display: inline-block; padding: 12px 26px; font-family: {{ fontFamily }}; font-size: 16px; font-weight: 600; color: {{ buttonColor }}; text-decoration: none; border-radius: 6px;">
+                                                        {{ button2.text }}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            {% endif %}
 
-          <!-- END CENTERED WHITE CONTAINER -->
-          </div>
-        </td>
-        <td style="font-family: {{ fontFamily }}; font-size: 14px; vertical-align: top;">&nbsp;</td>
-      </tr>
+                            <!-- Body Bottom Content -->
+                            {% if bodyBottom %}
+                            <div style="font-family: {{ fontFamily }}; font-size: 14px; line-height: 20px; color: #6B7280; margin: 24px 0 0;">
+                                {% block bodyBottom %}{{ bodyBottom }}{% endblock %}
+                            </div>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td align="center" style="padding: 24px 0;">
+                            <p style="font-family: {{ fontFamily }}; font-size: 12px; line-height: 18px; color: #6B7280; margin: 0;">
+                                {% block footer %}
+                                    © {{ "now"|date("Y") }} {{ organisationName|default('TeachNova') }}. All rights reserved.
+                                {% endblock %}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
     </table>
-  </body>
+</body>
 </html>
