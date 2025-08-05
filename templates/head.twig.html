@@ -8,12 +8,13 @@
     <meta name="Referrer‐Policy" value="no‐referrer | same‐origin"/>
     <meta name="htmx-config" content='{"scrollBehavior":"smooth", "scrollIntoViewOnBoost": true, "historyCacheSize": 0}'>
     
-    <!-- Custom TeachNova Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{ absoluteURL }}/themes/TeachNovaTheme/img/TNLogo.png"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ absoluteURL }}/themes/TeachNovaTheme/img/TNLogo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ absoluteURL }}/themes/TeachNovaTheme/img/TNLogo.png">
-    <link rel="apple-touch-icon" href="{{ absoluteURL }}/themes/TeachNovaTheme/img/TNLogo.png">
-
+        <!-- Custom TeachNova Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ absoluteURL }}/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="{{ absoluteURL }}/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ absoluteURL }}/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ absoluteURL }}/favicon.ico">
+    <link rel="apple-touch-icon" href="{{ absoluteURL }}/favicon.ico">
+    
     {% for code in page.extraMeta %}
         {{ code|raw }}
     {% endfor %}
