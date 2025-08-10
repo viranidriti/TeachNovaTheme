@@ -1,4 +1,9 @@
 <?php
+if (!isset($session) || !is_object($session)) {
+    // If session is not set, initialize it
+        $URL= '/'; // Default URL if not set
+
+} else {
     if (!empty($session->get('absoluteURL'))) {
         $URL = $session->get('absoluteURL')."/";
         $URL=htmlspecialchars($URL); // Ensure URL is safe for output
@@ -6,6 +11,7 @@
         $URL= '/'; // Default URL if not set
     
     }
+}
 ?>
 
    <!-- Footer -->
